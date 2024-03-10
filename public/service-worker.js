@@ -1,6 +1,8 @@
 let cacheName = "afterSchoolClub-v1";
 let cacheFiles = [
     "index.html",
+    "./src",
+    "./public"
 ];
 
 self.addEventListener("install", function (e) {
