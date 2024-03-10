@@ -1,29 +1,14 @@
-# vue-project
+# PWA Vue.js SFC App
 
-This template should help get you started developing with Vue 3 in Vite.
+This repository contains the source code for a Progressive Web App (PWA) built using Vue.js Single File Components (SFC).
 
-## Recommended IDE Setup
+## GitHub Repository
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[PWA Vue.js SFC App Repository](https://github.com/Dev-Limbachia/Ecommerce_PWA)
 
-## Customize configuration
+## GitHub Pages
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+You can directly run the app from the GitHub Pages:
 
-## Project Setup
+[Live App](https://dev-limbachia.github.io/Ecommerce_PWA/)
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
