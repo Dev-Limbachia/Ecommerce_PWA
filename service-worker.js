@@ -19,6 +19,11 @@ self.addEventListener("fetch", function (e) {
         return;
     }
 
+    // Skip caching for POST and PUT requests
+    if (e.request.method === 'POST' || e.request.method === 'PUT') {
+        return;
+    }
+
     e.respondWith(
         caches.match(e.request).then(function (cachedFile) {
             //if the file is in the cache, retrieve it from there
