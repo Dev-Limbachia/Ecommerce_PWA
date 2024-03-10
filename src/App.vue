@@ -242,6 +242,7 @@ export default {
       this.isCheckoutEnabled = false;
       this.showCheckout = false;
       this.showProduct = true;
+      window.location.reload(true);
     },
 
     performSearch() {
