@@ -19,8 +19,8 @@ self.addEventListener("fetch", function (e) {
         return;
     }
 
-       // Skip caching for POST requests
-       if (e.request.method === 'POST') {
+    // Skip caching for POST and PUT requests
+    if (e.request.method === 'POST' || e.request.method === 'PUT') {
         return;
     }
 
