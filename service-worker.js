@@ -19,28 +19,51 @@ self.addEventListener("fetch", function (e) {
         return;
     }
 
-    // Skip caching for POST and PUT requests
-    if (e.request.method === 'POST' || e.request.method === 'PUT') {
-        return;
-    }
-
-    e.respondWith(
-        caches.match(e.request).then(function (cachedFile) {
-            //if the file is in the cache, retrieve it from there
-            if (cachedFile) {
-                console.log("[Service Worker] Resource fetched from the cache for: " + e.request.url);
-                return cachedFile;
-            } else {//if the file is not in the cache, download the file
-                return fetch(e.request).then(function (response) {
-                    return caches.open(cacheName).then(function (cache) {
-                        //add the new file to the cache
-                        cache.put(e.request, response.clone());
-                        console.log("[Service Worker] Resource fetched and saved in the cache for: " +
-                            e.request.url);
-                        return response;
+    // Check if the request method is POST
+    if (e.request.method === 'POST') {
+        // Handle POST requests differently
+        // In this example, we clear the entire cache after a successful POST request
+        e.respondWith(
+            fetch(e.request).then(function (response) {
+                // Clear entire cache
+                caches.delete(cacheName).then(function() {
+                    console.log("[Service Worker] Cache cleared after successful POST request.");
+                    // Reload the page to fetch updated data
+                    self.clients.matchAll().then(function(clients) {
+                        clients.forEach(function(client) {
+                            client.postMessage({ type: 'reload' });
+                        });
                     });
                 });
-            }
-        })
-    );
+                return response;
+            }).catch(function () {
+                // In case of an error, serve the response from the cache if available
+                return caches.match(e.request);
+            })
+        );
+    } else {
+        // Skip caching for PUT requests
+        if (e.request.method === 'PUT') {
+            return;
+        }
+        
+        // For other request methods (e.g., GET), check the cache first
+        e.respondWith(
+            caches.match(e.request).then(function (cachedFile) {
+                if (cachedFile) {
+                    console.log("[Service Worker] Resource fetched from the cache for: " + e.request.url);
+                    return cachedFile;
+                } else {
+                    return fetch(e.request).then(function (response) {
+                        return caches.open(cacheName).then(function (cache) {
+                            cache.put(e.request, response.clone());
+                            console.log("[Service Worker] Resource fetched and saved in the cache for: " +
+                                e.request.url);
+                            return response;
+                        });
+                    });
+                }
+            })
+        );
+    }
 });
