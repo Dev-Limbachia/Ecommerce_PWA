@@ -19,16 +19,6 @@ self.addEventListener("fetch", function (e) {
         return;
     }
 
-    // Respond to POST requests to '/lessons'
-    if (e.request.method === 'POST' && e.request.url.includes('/lessons')) {
-        // Remove the cached '/lessons' file
-        caches.open(cacheName).then(function (cache) {
-            cache.delete('/lessons').then(function (deleted) {
-                console.log('[Service Worker] Deleted cached /lessons:', deleted);
-            });
-        });
-    }
-
     // Skip caching for POST and PUT requests
     if (e.request.method === 'POST' || e.request.method === 'PUT') {
         return;
