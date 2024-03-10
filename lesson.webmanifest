@@ -1,0 +1,35 @@
+{
+    "name": "My After School Club PWA",
+    "short_name": "School Club",
+    "description": "This is after school club",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "icons": [
+        {
+            "src": "image/pwa_icon(192x192).png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "image/pwa_icon(512x512).png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "index.html",
+    "display": "fullscreen",
+    "background_color": "#007bff",
+    "screenshots": [
+      {
+        "src": "image/pwa_icon(512x512).png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "form_factor": "wide"
+      },
+      {
+        "src": "image/pwa_icon(320x320).png",
+        "sizes": "320x320",
+        "type": "image/png",
+        "form_factor": "narrow"
+      }
+    ]
+  }
