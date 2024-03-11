@@ -398,19 +398,19 @@ export default {
       <!-- Test Console Section -->
       <div class="view-TestConsole" v-if="viewTestConsole">
         <!-- Console options -->
-        <a :href="url" target="_blank" class="test-button">
+        <a :href="url" target="_blank" class="button test-button">
           <i class="fas fa-check-circle"></i>
           Accept Exception
         </a>
-        <button class="test-button" @click="reloadPage">
+        <button class="button test-button" @click="reloadPage">
           <i class="fas fa-sync-alt"></i>
           Reload Page
         </button>
-        <button class="test-button" @click="unregisterAllServiceWorkers">
+        <button class="button test-button" @click="unregisterAllServiceWorkers">
           <i class="fab fa-uniregistry"></i>
           Unregister Service Worker
         </button>
-        <button class="test-button" @click="deleteAllCaches">
+        <button class="button test-button" @click="deleteAllCaches">
           <i class="fas fa-trash"></i>
           Delete All Cache
         </button>
