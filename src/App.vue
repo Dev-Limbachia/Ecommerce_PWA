@@ -433,7 +433,7 @@ export default {
             <input type="text" id="phone" v-model="phone" @input="checkInputs">
           </div>
           <div class="checkout-box">
-            <button id="checkout" :disabled="!isCheckoutEnabled" @click="checkout">Checkout</button>
+            <button class="button" id="checkout" :disabled="!isCheckoutEnabled" @click="checkout">Checkout</button>
           </div>
         </div>
       </main>
